@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{919A9006-5258-4100-8282-C00942910A02}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Abn2Haags.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\Test.Abn2Haags.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Abn2Haags">
+        <MSBuild Projects="Abn2Haags.dproj"/>
+    </Target>
+    <Target Name="Abn2Haags:Clean">
+        <MSBuild Projects="Abn2Haags.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Abn2Haags:Make">
+        <MSBuild Projects="Abn2Haags.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Test_Abn2Haags">
+        <MSBuild Projects="Test\Test.Abn2Haags.dproj"/>
+    </Target>
+    <Target Name="Test_Abn2Haags:Clean">
+        <MSBuild Projects="Test\Test.Abn2Haags.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Test_Abn2Haags:Make">
+        <MSBuild Projects="Test\Test.Abn2Haags.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Abn2Haags;Test_Abn2Haags"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Abn2Haags:Clean;Test_Abn2Haags:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Abn2Haags:Make;Test_Abn2Haags:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
